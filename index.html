@@ -102,13 +102,14 @@
     .projects-grid {
       margin-top: 52px;
       display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 20px; overflow: visible; padding-bottom: 60px;
+      gap: 24px; overflow: visible; padding-bottom: 80px;
     }
 
     /* ── 3D PROJECT CARDS (uiverse Smit-Prajapati, adapted) ── */
+    /* ── 3D PROJECT CARDS ── */
     .pc-parent {
       width: 100%;
-      height: 320px;
+      height: 400px;
       perspective: 1000px;
     }
     .pc-card {
@@ -119,7 +120,6 @@
       transform-style: preserve-3d;
       box-shadow: rgba(5, 71, 17, 0) 40px 50px 25px -40px, rgba(5, 71, 17, 0.2) 0px 25px 25px -5px;
       position: relative;
-      overflow: hidden;
     }
     .pc-glass {
       transform-style: preserve-3d;
@@ -132,6 +132,7 @@
       border-left: 1px solid white;
       border-bottom: 1px solid white;
       transition: all 0.5s ease-in-out;
+      pointer-events: none;
     }
     .pc-logo {
       position: absolute;
@@ -156,42 +157,50 @@
       display: grid; place-content: center;
       font-size: 18px; transition-delay: 1.6s;
     }
+
+    /* Content flows naturally — no overlap */
     .pc-content {
-      padding: 72px 52px 0 26px;
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 64px;
+      padding: 76px 48px 16px 26px;
       transform: translate3d(0, 0, 26px);
+      display: flex; flex-direction: column; justify-content: flex-start;
     }
     .pc-category {
-      display: inline-block;
+      display: inline-block; width: fit-content;
       font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
-      color: rgba(255,255,255,0.8); background: rgba(255,255,255,0.22);
+      color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.22);
       padding: 3px 8px; border-radius: 4px; margin-bottom: 10px;
     }
     .pc-title {
       display: block;
-      color: #064e2a; font-weight: 800; font-size: 18px; letter-spacing: -0.3px;
+      color: #064e2a; font-weight: 800; font-size: 19px; letter-spacing: -0.3px;
+      margin-bottom: 8px;
     }
     .pc-text {
       display: block;
-      color: rgba(6,78,42,0.78); font-size: 13px; margin-top: 8px; line-height: 1.55;
+      color: rgba(6,78,42,0.78); font-size: 13px; line-height: 1.6;
+      margin-bottom: 14px;
     }
-    .pc-bottom {
-      padding: 8px 14px;
-      transform-style: preserve-3d;
-      position: absolute; bottom: 16px; left: 16px; right: 16px;
-      display: flex; align-items: center; justify-content: space-between; gap: 8px;
-      transform: translate3d(0, 0, 26px);
-    }
-    .pc-stack { display: flex; flex-wrap: wrap; gap: 5px; flex: 1; }
+    .pc-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
     .pc-stack-tag {
       font-size: 11px; font-weight: 600;
       background: rgba(255,255,255,0.38); color: #064e2a;
-      padding: 3px 7px; border-radius: 4px;
+      padding: 3px 8px; border-radius: 4px;
     }
-    .pc-links { display: flex; gap: 7px; transform-style: preserve-3d; flex-shrink: 0; }
+
+    /* Links strip at bottom */
+    .pc-bottom {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 12px 18px;
+      display: flex; gap: 8px; justify-content: flex-end;
+      transform: translate3d(0, 0, 26px);
+      transform-style: preserve-3d;
+    }
     .pc-link {
       font-size: 12px; font-weight: 700; color: #064e2a;
       text-decoration: none; background: rgba(255,255,255,0.92);
-      border-radius: 6px; padding: 5px 10px;
+      border-radius: 6px; padding: 6px 12px;
       box-shadow: rgba(5,71,17,0.3) 0px 5px 5px -3px;
       transition: transform 0.2s ease-in-out 0.4s, box-shadow 0.2s ease-in-out 0.4s, background 0.15s;
     }
@@ -203,7 +212,7 @@
       transform: rotate3d(1, 1, 0, 30deg);
       box-shadow: rgba(5,71,17,0.3) 30px 50px 25px -40px, rgba(5,71,17,0.1) 0px 25px 30px 0px;
     }
-    .pc-parent:hover .pc-links .pc-link {
+    .pc-parent:hover .pc-bottom .pc-link {
       transform: translate3d(0, 0, 50px);
       box-shadow: rgba(5,71,17,0.2) -5px 20px 10px 0px;
     }
@@ -213,6 +222,7 @@
     .pc-parent:hover .pc-circle5 { transform: translate3d(0, 0, 120px); }
 
     @media (max-width: 768px) {
+      .pc-parent { height: 360px; }
       .pc-parent:hover .pc-card { transform: none; }
     }
 
