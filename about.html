@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>О себе — Матвей Бережных</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+    .content h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.8px; margin-bottom: 20px; }
+    .content p { font-size: 16px; color: var(--text-muted); line-height: 1.8; margin-bottom: 16px; }
+    .content p strong { color: var(--text); font-weight: 600; }
+
+    /* Timeline */
+    .timeline { margin-top: 8px; }
+    .tl-item {
+      display: flex; gap: 20px; padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .tl-item:last-child { border-bottom: none; }
+    .tl-dot {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--bg2); border: 2px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; flex-shrink: 0; margin-top: 2px;
+    }
+    .tl-year { font-size: 12px; font-weight: 600; color: var(--text-muted); letter-spacing: 0.5px; }
+    .tl-title { font-size: 16px; font-weight: 700; color: var(--text); margin-top: 2px; }
+    .tl-place { font-size: 14px; color: var(--text-muted); margin-top: 2px; }
+    .tl-desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-top: 8px; }
+
+    /* Values grid */
+    .values-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px; }
+    .value-card {
+      background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 24px; transition: border-color 0.15s;
+    }
+    .value-card:hover { border-color: #bbb; }
+    .value-icon { font-size: 24px; margin-bottom: 12px; }
+    .value-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .value-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+
+    @media (max-width: 768px) {
+      .two-col { grid-template-columns: 1fr; gap: 48px; }
+      .values-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="nav">
+    <a href="index.html" class="nav-logo">МБ<span>.</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li>
+        <button onclick="toggleDropdown(this)">О себе <i class="chevron">▾</i></button>
+        <div class="dropdown">
+          <a href="about.html" class="dropdown-item">
+            <div class="di-icon">👤</div>
+            <div class="di-text"><div class="di-title">Обо мне</div><div class="di-desc">Биография, опыт, ценности</div></div>
+          </a>
+          <a href="about.html#experience" class="dropdown-item">
+            <div class="di-icon">🏆</div>
+            <div class="di-text"><div class="di-title">Опыт и образование</div><div class="di-desc">Чем занимался, где учился</div></div>
+          </a>
+        </div>
+      </li>
+      <li><a href="index.html#skills">Навыки</a></li>
+      <li>
+        <button onclick="toggleDropdown(this)">Проекты <i class="chevron">▾</i></button>
+        <div class="dropdown">
+          <a href="project-ai.html" class="dropdown-item">
+            <div class="di-icon">🤖</div>
+            <div class="di-text"><div class="di-title">AI Ассистент</div><div class="di-desc">LLM-агент с памятью и RAG</div></div>
+          </a>
+          <a href="project-analytics.html" class="dropdown-item">
+            <div class="di-icon">📊</div>
+            <div class="di-text"><div class="di-title">Аналитическая платформа</div><div class="di-desc">SaaS-дашборды + AI-инсайты</div></div>
+          </a>
+          <a href="project-outreach.html" class="dropdown-item">
+            <div class="di-icon">✉️</div>
+            <div class="di-text"><div class="di-title">Outreach автоматизация</div><div class="di-desc">AI-рассылки + аналитика</div></div>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="index.html#projects" class="dropdown-item">
+            <div class="di-icon">→</div>
+            <div class="di-text"><div class="di-title">Все проекты</div><div class="di-desc">На главной странице</div></div>
+          </a>
+        </div>
+      </li>
+      <li><a href="index.html#contact">Контакты</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="https://github.com/tamed0g" target="_blank" rel="noopener noreferrer" class="btn btn-outline">GitHub</a>
+      <a href="index.html#contact" class="btn btn-primary">Связаться</a>
+    </div>
+  </nav>
+
+  <div class="page-hero fade-in">
+    <div class="breadcrumb">
+      <a href="index.html">Главная</a>
+      <span>/</span>
+      <span>О себе</span>
+    </div>
+    <h1>Привет, я — Матвей.</h1>
+    <p>Full-stack AI инженер. Строю продукты, которые работают — от идеи до запуска.</p>
+  </div>
+
+  <div class="content">
+    <div class="two-col">
+      <div class="fade-in">
+        <h2>Кто я</h2>
+        <p>Меня зовут <strong>Матвей Бережных</strong>. Я full-stack разработчик с фокусом на AI-продукты. Мне нравится весь путь — от чистого листа до рабочего приложения в продакшене.</p>
+        <p>Работаю с <strong>Python, React, Next.js</strong> и всем, что нужно для запуска современного продукта. Особенно интересуют задачи на стыке разработки и AI: RAG-системы, агенты, умные интерфейсы.</p>
+        <p>Ценю чистый код, хорошие абстракции и продукты, которые решают настоящие проблемы — а не просто выглядят красиво в презентации.</p>
+        <div style="display:flex;gap:10px;margin-top:24px;flex-wrap:wrap;">
+          <a href="https://t.me/tamed0g" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Написать в Telegram →</a>
+          <a href="https://github.com/tamed0g" target="_blank" rel="noopener noreferrer" class="btn btn-outline">GitHub</a>
+        </div>
+      </div>
+      <div class="values-grid fade-in">
+        <div class="value-card">
+          <div class="value-icon">⚡</div>
+          <div class="value-title">Быстрый старт</div>
+          <div class="value-desc">Прототип за день, MVP за неделю. Люблю скорость без потери качества.</div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🎯</div>
+          <div class="value-title">Результат</div>
+          <div class="value-desc">Не код ради кода — код, который решает задачи и приносит ценность.</div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🤖</div>
+          <div class="value-title">AI-first</div>
+          <div class="value-desc">Интегрирую LLM и агентов туда, где это реально помогает, а не для хайпа.</div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">📚</div>
+          <div class="value-title">Учусь всегда</div>
+          <div class="value-desc">Технологии меняются быстро — стараюсь меняться вместе с ними.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 80px;" id="experience">
+      <h2 class="fade-in">Опыт и образование</h2>
+      <div class="timeline">
+        <div class="tl-item fade-in">
+          <div class="tl-dot">💼</div>
+          <div class="tl-body">
+            <div class="tl-year">2024 — наст. время</div>
+            <div class="tl-title">Full-stack AI Engineer</div>
+            <div class="tl-place">Фриланс / собственные проекты</div>
+            <div class="tl-desc">Разработка AI-продуктов: чат-боты, RAG-системы, автоматизация. Стек: Python, FastAPI, React, Next.js, OpenAI API, LangChain.</div>
+          </div>
+        </div>
+        <div class="tl-item fade-in">
+          <div class="tl-dot">🚀</div>
+          <div class="tl-body">
+            <div class="tl-year">2023 — 2024</div>
+            <div class="tl-title">Backend Developer</div>
+            <div class="tl-place">Стартап / пет-проекты</div>
+            <div class="tl-desc">Строил backend-сервисы на Python, работал с базами данных, REST API и интеграциями сторонних сервисов.</div>
+          </div>
+        </div>
+        <div class="tl-item fade-in">
+          <div class="tl-dot">🎓</div>
+          <div class="tl-body">
+            <div class="tl-year">2021 — 2025</div>
+            <div class="tl-title">ГУАП — Теоретическая и прикладная лингвистика</div>
+            <div class="tl-place">Санкт-Петербург, бакалавр</div>
+            <div class="tl-desc">Параллельно с учёбой — самообразование в Computer Science: алгоритмы, системный дизайн, machine learning, большие языковые модели.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-left">© 2026 <a href="index.html">Матвей Бережных</a></div>
+    <div class="footer-socials">
+      <a href="https://github.com/tamed0g" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://t.me/tamed0g" target="_blank" rel="noopener noreferrer">Telegram</a>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

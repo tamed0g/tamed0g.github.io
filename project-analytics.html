@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Аналитическая платформа — Матвей Бережных</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Dashboard mockup */
+    .dash-mockup {
+      background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 24px; margin-top: 8px;
+    }
+    .dash-row { display: flex; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
+    .dash-kpi {
+      flex: 1; min-width: 120px; background: var(--bg); border: 1px solid var(--border);
+      border-radius: 8px; padding: 16px;
+    }
+    .dash-kpi .kpi-num { font-size: 24px; font-weight: 800; letter-spacing: -1px; }
+    .dash-kpi .kpi-label { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+    .dash-kpi .kpi-delta { font-size: 12px; color: #22c55e; font-weight: 600; margin-top: 4px; }
+    .dash-chart {
+      background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 16px;
+    }
+    .dash-chart-label { font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 12px; }
+    .bars { display: flex; align-items: flex-end; gap: 6px; height: 60px; }
+    .bar {
+      flex: 1; background: linear-gradient(to top, #22c55e, #86efac);
+      border-radius: 3px; min-height: 8px; transition: opacity 0.2s;
+    }
+    .bar:hover { opacity: 0.7; }
+  </style>
+</head>
+<body>
+
+  <nav id="nav">
+    <a href="index.html" class="nav-logo">МБ<span>.</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li>
+        <button onclick="toggleDropdown(this)">О себе <i class="chevron">▾</i></button>
+        <div class="dropdown">
+          <a href="about.html" class="dropdown-item"><div class="di-icon">👤</div><div class="di-text"><div class="di-title">Обо мне</div><div class="di-desc">Биография, опыт, ценности</div></div></a>
+          <a href="about.html#experience" class="dropdown-item"><div class="di-icon">🏆</div><div class="di-text"><div class="di-title">Опыт и образование</div><div class="di-desc">Чем занимался, где учился</div></div></a>
+        </div>
+      </li>
+      <li><a href="index.html#skills">Навыки</a></li>
+      <li>
+        <button onclick="toggleDropdown(this)">Проекты <i class="chevron">▾</i></button>
+        <div class="dropdown">
+          <a href="project-ai.html" class="dropdown-item"><div class="di-icon">🤖</div><div class="di-text"><div class="di-title">AI Ассистент</div><div class="di-desc">LLM-агент с памятью и RAG</div></div></a>
+          <a href="project-analytics.html" class="dropdown-item"><div class="di-icon">📊</div><div class="di-text"><div class="di-title">Аналитическая платформа</div><div class="di-desc">SaaS-дашборды + AI-инсайты</div></div></a>
+          <a href="project-outreach.html" class="dropdown-item"><div class="di-icon">✉️</div><div class="di-text"><div class="di-title">Outreach автоматизация</div><div class="di-desc">AI-рассылки + аналитика</div></div></a>
+          <div class="dropdown-divider"></div>
+          <a href="index.html#projects" class="dropdown-item"><div class="di-icon">→</div><div class="di-text"><div class="di-title">Все проекты</div><div class="di-desc">На главной странице</div></div></a>
+        </div>
+      </li>
+      <li><a href="index.html#contact">Контакты</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="https://github.com/tamed0g" target="_blank" rel="noopener noreferrer" class="btn btn-outline">GitHub</a>
+      <a href="index.html#contact" class="btn btn-primary">Связаться</a>
+    </div>
+  </nav>
+
+  <div class="page-hero fade-in">
+    <div class="breadcrumb">
+      <a href="index.html">Главная</a><span>/</span>
+      <a href="index.html#projects">Проекты</a><span>/</span>
+      <span>Аналитическая платформа</span>
+    </div>
+    <div class="hero-meta">
+      <span class="project-tag">Full-stack</span>
+      <span class="project-tag">SaaS</span>
+      <span class="project-tag">AI-инсайты</span>
+    </div>
+    <h1>Аналитическая<br/>платформа</h1>
+    <p>Веб-приложение для анализа данных с интерактивными дашбордами, экспортом отчётов и AI-инсайтами в реальном времени.</p>
+    <div class="hero-actions">
+      <a href="https://github.com/tamed0g/ai_dashboard" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Смотреть на GitHub →</a>
+      <a href="https://github.com/tamed0g/ai_dashboard" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Демо ↗</a>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <div class="content-block fade-in">
+      <h2>О проекте</h2>
+      <p>Полноценный <strong>SaaS-продукт</strong> для бизнеса: загружай данные, смотри дашборды, получай AI-объяснения трендов. Нет нужды нанимать аналитика для каждого отчёта.</p>
+      <p>Сделал всё сам — от <strong>архитектуры базы данных</strong> до дизайна интерфейса. Суперсила — AI-слой, который смотрит на цифры и говорит, что они значат на человеческом языке.</p>
+    </div>
+
+    <div class="content-block fade-in">
+      <h2>Превью дашборда</h2>
+      <div class="dash-mockup">
+        <div class="dash-row">
+          <div class="dash-kpi">
+            <div class="kpi-num">12,480</div>
+            <div class="kpi-label">Активных пользователей</div>
+            <div class="kpi-delta">↑ 18% за месяц</div>
+          </div>
+          <div class="dash-kpi">
+            <div class="kpi-num">₽2.4M</div>
+            <div class="kpi-label">Выручка</div>
+            <div class="kpi-delta">↑ 34% за месяц</div>
+          </div>
+          <div class="dash-kpi">
+            <div class="kpi-num">94%</div>
+            <div class="kpi-label">Retention</div>
+            <div class="kpi-delta">↑ 2pp</div>
+          </div>
+          <div class="dash-kpi">
+            <div class="kpi-num">1,230</div>
+            <div class="kpi-label">Новых заказов</div>
+            <div class="kpi-delta">↑ 9%</div>
+          </div>
+        </div>
+        <div class="dash-chart">
+          <div class="dash-chart-label">Динамика выручки, последние 12 месяцев</div>
+          <div class="bars">
+            <div class="bar" style="height:30%"></div>
+            <div class="bar" style="height:38%"></div>
+            <div class="bar" style="height:45%"></div>
+            <div class="bar" style="height:42%"></div>
+            <div class="bar" style="height:55%"></div>
+            <div class="bar" style="height:60%"></div>
+            <div class="bar" style="height:52%"></div>
+            <div class="bar" style="height:70%"></div>
+            <div class="bar" style="height:75%"></div>
+            <div class="bar" style="height:80%"></div>
+            <div class="bar" style="height:88%"></div>
+            <div class="bar" style="height:100%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-block fade-in">
+      <h2>Ключевые возможности</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <div class="feature-title">Интерактивные дашборды</div>
+          <div class="feature-desc">Drag-and-drop виджеты, фильтры в реальном времени, сохранение конфигураций.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🤖</div>
+          <div class="feature-title">AI-инсайты</div>
+          <div class="feature-desc">Автоматические объяснения аномалий и трендов на русском языке через GPT-4.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📤</div>
+          <div class="feature-title">Экспорт отчётов</div>
+          <div class="feature-desc">PDF, Excel, CSV с одним кликом. Поддержка расписания авто-отчётов.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">👥</div>
+          <div class="feature-title">Мультипользователь</div>
+          <div class="feature-desc">Роли, права доступа, командные воркспейсы с аудит-логом изменений.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-block fade-in">
+      <h2>Технический стек</h2>
+      <div class="stack-row">
+        <span class="stack-tag">Next.js 14</span>
+        <span class="stack-tag">TypeScript</span>
+        <span class="stack-tag">Supabase</span>
+        <span class="stack-tag">PostgreSQL</span>
+        <span class="stack-tag">Recharts</span>
+        <span class="stack-tag">TailwindCSS</span>
+        <span class="stack-tag">OpenAI API</span>
+        <span class="stack-tag">Vercel</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="project-nav">
+    <a href="project-ai.html" class="pnav-link">
+      <span class="pnav-label">← Предыдущий</span>
+      <span class="pnav-title">AI Ассистент</span>
+    </a>
+    <a href="project-outreach.html" class="pnav-link right">
+      <span class="pnav-label">Следующий →</span>
+      <span class="pnav-title">Outreach автоматизация</span>
+    </a>
+  </div>
+
+  <footer>
+    <div class="footer-left">© 2026 <a href="index.html">Матвей Бережных</a></div>
+    <div class="footer-socials">
+      <a href="https://github.com/tamed0g" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://t.me/tamed0g" target="_blank" rel="noopener noreferrer">Telegram</a>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

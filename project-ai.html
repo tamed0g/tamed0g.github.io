@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Ассистент — Матвей Бережных</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .code-block {
+      background: #111; border-radius: var(--radius); padding: 28px;
+      font-family: 'Menlo', 'Monaco', monospace; font-size: 13px;
+      line-height: 1.7; color: #e5e5e5; overflow-x: auto; margin-top: 8px;
+    }
+    .code-block .c-comment { color: #666; }
+    .code-block .c-key { color: #7dd3fc; }
+    .code-block .c-str { color: #86efac; }
+    .code-block .c-fn { color: #fbbf24; }
+  </style>
+</head>
+<body>
+
+  <nav id="nav">
+    <a href="index.html" class="nav-logo">МБ<span>.</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li>
+        <button onclick="toggleDropdown(this)">О себе <i class="chevron">▾</i></button>
+        <div class="dropdown">
+          <a href="about.html" class="dropdown-item"><div class="di-icon">👤</div><div class="di-text"><div class="di-title">Обо мне</div><div class="di-desc">Биография, опыт, ценности</div></div></a>
+          <a href="about.html#experience" class="dropdown-item"><div class="di-icon">🏆</div><div class="di-text"><div class="di-title">Опыт и образование</div><div class="di-desc">Чем занимался, где учился</div></div></a>
+        </div>
+      </li>
+      <li><a href="index.html#skills">Навыки</a></li>
+      <li>
+        <button onclick="toggleDropdown(this)">Проекты <i class="chevron">▾</i></button>
+        <div class="dropdown">
+          <a href="project-ai.html" class="dropdown-item"><div class="di-icon">🤖</div><div class="di-text"><div class="di-title">AI Ассистент</div><div class="di-desc">LLM-агент с памятью и RAG</div></div></a>
+          <a href="project-analytics.html" class="dropdown-item"><div class="di-icon">📊</div><div class="di-text"><div class="di-title">Аналитическая платформа</div><div class="di-desc">SaaS-дашборды + AI-инсайты</div></div></a>
+          <a href="project-outreach.html" class="dropdown-item"><div class="di-icon">✉️</div><div class="di-text"><div class="di-title">Outreach автоматизация</div><div class="di-desc">AI-рассылки + аналитика</div></div></a>
+          <div class="dropdown-divider"></div>
+          <a href="index.html#projects" class="dropdown-item"><div class="di-icon">→</div><div class="di-text"><div class="di-title">Все проекты</div><div class="di-desc">На главной странице</div></div></a>
+        </div>
+      </li>
+      <li><a href="index.html#contact">Контакты</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="https://github.com/tamed0g" target="_blank" rel="noopener noreferrer" class="btn btn-outline">GitHub</a>
+      <a href="index.html#contact" class="btn btn-primary">Связаться</a>
+    </div>
+  </nav>
+
+  <div class="page-hero fade-in">
+    <div class="breadcrumb">
+      <a href="index.html">Главная</a><span>/</span>
+      <a href="index.html#projects">Проекты</a><span>/</span>
+      <span>AI Ассистент</span>
+    </div>
+    <div class="hero-meta">
+      <span class="project-tag">AI · Агент</span>
+      <span class="project-tag">LLM</span>
+      <span class="project-tag">RAG</span>
+    </div>
+    <h1>AI Ассистент</h1>
+    <p>Умный чат-бот на основе LLM с долгосрочной памятью, инструментами и семантическим поиском по документам.</p>
+    <div class="hero-actions">
+      <a href="https://github.com/tamed0g/assistant" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Смотреть на GitHub →</a>
+      <a href="https://github.com/tamed0g/assistant" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Демо ↗</a>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <div class="content-block fade-in">
+      <h2>О проекте</h2>
+      <p>Это <strong>продакшен-готовый AI-ассистент</strong>, который умеет работать с документами, запоминать контекст разговора и вызывать внешние инструменты. Не просто обёртка над ChatGPT — полноценная агентная архитектура.</p>
+      <p>Ассистент использует <strong>RAG (Retrieval-Augmented Generation)</strong>: перед ответом он ищет релевантные фрагменты в векторной базе данных и добавляет их в контекст. Это позволяет работать с большими корпусами документов без потери точности.</p>
+    </div>
+
+    <div class="content-block fade-in">
+      <h2>Ключевые возможности</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🧠</div>
+          <div class="feature-title">Долгосрочная память</div>
+          <div class="feature-desc">Помнит предыдущие разговоры, персонализирует ответы на основе истории взаимодействия.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔍</div>
+          <div class="feature-title">RAG поиск</div>
+          <div class="feature-desc">Семантический поиск по базе документов через векторные эмбеддинги. Точные ответы из вашего контента.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🛠️</div>
+          <div class="feature-title">Tool calling</div>
+          <div class="feature-desc">Вызов внешних API, поиск в интернете, выполнение кода — агент сам решает, какой инструмент использовать.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <div class="feature-title">Стриминг ответов</div>
+          <div class="feature-desc">Ответы появляются токен за токеном — никаких долгих ожиданий, ощущение живого диалога.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-block fade-in">
+      <h2>Технический стек</h2>
+      <div class="stack-row">
+        <span class="stack-tag">Python 3.11</span>
+        <span class="stack-tag">FastAPI</span>
+        <span class="stack-tag">LangChain</span>
+        <span class="stack-tag">OpenAI API</span>
+        <span class="stack-tag">Qdrant</span>
+        <span class="stack-tag">Redis</span>
+        <span class="stack-tag">React</span>
+        <span class="stack-tag">Docker</span>
+        <span class="stack-tag">Railway</span>
+      </div>
+    </div>
+
+    <div class="content-block fade-in">
+      <h2>Пример кода</h2>
+      <div class="code-block">
+<span class="c-comment"># RAG pipeline — поиск + генерация ответа</span>
+<span class="c-key">async def</span> <span class="c-fn">answer_with_rag</span>(query: str, session_id: str):
+    <span class="c-comment"># 1. Семантический поиск по документам</span>
+    docs = <span class="c-key">await</span> vector_store.<span class="c-fn">similarity_search</span>(
+        query, k=<span class="c-str">5</span>, filter={<span class="c-str">"session"</span>: session_id}
+    )
+
+    <span class="c-comment"># 2. Загрузка памяти из Redis</span>
+    history = <span class="c-key">await</span> memory.<span class="c-fn">load_messages</span>(session_id)
+
+    <span class="c-comment"># 3. Генерация ответа с контекстом</span>
+    <span class="c-key">async for</span> chunk <span class="c-key">in</span> llm.<span class="c-fn">astream</span>({
+        <span class="c-str">"context"</span>: docs,
+        <span class="c-str">"history"</span>: history,
+        <span class="c-str">"question"</span>: query,
+    }):
+        <span class="c-key">yield</span> chunk.content
+      </div>
+    </div>
+
+  </div>
+
+  <div class="project-nav">
+    <a href="index.html#projects" class="pnav-link">
+      <span class="pnav-label">← Назад</span>
+      <span class="pnav-title">Все проекты</span>
+    </a>
+    <a href="project-analytics.html" class="pnav-link right">
+      <span class="pnav-label">Следующий →</span>
+      <span class="pnav-title">Аналитическая платформа</span>
+    </a>
+  </div>
+
+  <footer>
+    <div class="footer-left">© 2026 <a href="index.html">Матвей Бережных</a></div>
+    <div class="footer-socials">
+      <a href="https://github.com/tamed0g" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://t.me/tamed0g" target="_blank" rel="noopener noreferrer">Telegram</a>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

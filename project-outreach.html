@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Outreach автоматизация — Матвей Бережных</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Email preview mockup */
+    .email-preview {
+      background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius);
+      overflow: hidden; margin-top: 8px;
+    }
+    .ep-header {
+      background: var(--bg2); border-bottom: 1px solid var(--border);
+      padding: 14px 20px; display: flex; align-items: center; gap: 12px;
+    }
+    .ep-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--border); }
+    .ep-dot.red { background: #fca5a5; }
+    .ep-dot.yellow { background: #fde68a; }
+    .ep-dot.green { background: #86efac; }
+    .ep-body { padding: 24px; }
+    .ep-subject { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+    .ep-meta { font-size: 12px; color: var(--text-muted); margin-bottom: 20px; }
+    .ep-text { font-size: 14px; color: var(--text-muted); line-height: 1.8; }
+    .ep-text .highlight { color: var(--text); font-weight: 600; background: rgba(34,197,94,0.1); padding: 0 3px; border-radius: 3px; }
+    .ep-ab { display: flex; gap: 10px; margin-top: 16px; }
+    .ep-ab-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.5px; padding: 3px 8px; border-radius: 4px; }
+    .ep-ab-tag.a { background: rgba(34,197,94,0.12); color: #16a34a; }
+    .ep-ab-tag.b { background: rgba(59,130,246,0.12); color: #2563eb; }
+    .ep-stats { display: flex; gap: 20px; border-top: 1px solid var(--border); padding: 14px 20px; }
+    .ep-stat { display: flex; flex-direction: column; gap: 2px; }
+    .ep-stat .es-num { font-size: 16px; font-weight: 700; }
+    .ep-stat .es-label { font-size: 11px; color: var(--text-muted); }
+  </style>
+</head>
+<body>
+
+  <nav id="nav">
+    <a href="index.html" class="nav-logo">МБ<span>.</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li>
+        <button onclick="toggleDropdown(this)">О себе <i class="chevron">▾</i></button>
+        <div class="dropdown">
+          <a href="about.html" class="dropdown-item"><div class="di-icon">👤</div><div class="di-text"><div class="di-title">Обо мне</div><div class="di-desc">Биография, опыт, ценности</div></div></a>
+          <a href="about.html#experience" class="dropdown-item"><div class="di-icon">🏆</div><div class="di-text"><div class="di-title">Опыт и образование</div><div class="di-desc">Чем занимался, где учился</div></div></a>
+        </div>
+      </li>
+      <li><a href="index.html#skills">Навыки</a></li>
+      <li>
+        <button onclick="toggleDropdown(this)">Проекты <i class="chevron">▾</i></button>
+        <div class="dropdown">
+          <a href="project-ai.html" class="dropdown-item"><div class="di-icon">🤖</div><div class="di-text"><div class="di-title">AI Ассистент</div><div class="di-desc">LLM-агент с памятью и RAG</div></div></a>
+          <a href="project-analytics.html" class="dropdown-item"><div class="di-icon">📊</div><div class="di-text"><div class="di-title">Аналитическая платформа</div><div class="di-desc">SaaS-дашборды + AI-инсайты</div></div></a>
+          <a href="project-outreach.html" class="dropdown-item"><div class="di-icon">✉️</div><div class="di-text"><div class="di-title">Outreach автоматизация</div><div class="di-desc">AI-рассылки + аналитика</div></div></a>
+          <div class="dropdown-divider"></div>
+          <a href="index.html#projects" class="dropdown-item"><div class="di-icon">→</div><div class="di-text"><div class="di-title">Все проекты</div><div class="di-desc">На главной странице</div></div></a>
+        </div>
+      </li>
+      <li><a href="index.html#contact">Контакты</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="https://github.com/tamed0g" target="_blank" rel="noopener noreferrer" class="btn btn-outline">GitHub</a>
+      <a href="index.html#contact" class="btn btn-primary">Связаться</a>
+    </div>
+  </nav>
+
+  <div class="page-hero fade-in">
+    <div class="breadcrumb">
+      <a href="index.html">Главная</a><span>/</span>
+      <a href="index.html#projects">Проекты</a><span>/</span>
+      <span>Outreach автоматизация</span>
+    </div>
+    <div class="hero-meta">
+      <span class="project-tag">Автоматизация</span>
+      <span class="project-tag">AI-генерация</span>
+      <span class="project-tag">A/B тесты</span>
+    </div>
+    <h1>Outreach<br/>автоматизация</h1>
+    <p>Система персонализированных рассылок с AI-генерацией текстов, аналитикой открытий и A/B тестированием прямо в интерфейсе.</p>
+    <div class="hero-actions">
+      <a href="https://github.com/tamed0g/b2b-outreach-pipeline" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Смотреть на GitHub →</a>
+      <a href="https://github.com/tamed0g/b2b-outreach-pipeline" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Демо ↗</a>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <div class="content-block fade-in">
+      <h2>О проекте</h2>
+      <p>Устал от шаблонных холодных писем, которые никто не читает? Этот инструмент берёт список контактов, данные о каждом человеке и <strong>генерирует персонализированное письмо</strong> для каждого — с помощью GPT-4.</p>
+      <p>Не просто "Привет, {{имя}}" — настоящая персонализация: упоминание компании, последнего поста в LinkedIn, общих интересов. <strong>Open rate вырастает в 2–3 раза</strong> по сравнению с шаблонными рассылками.</p>
+    </div>
+
+    <div class="content-block fade-in">
+      <h2>Как выглядит письмо</h2>
+      <div class="email-preview">
+        <div class="ep-header">
+          <div class="ep-dot red"></div>
+          <div class="ep-dot yellow"></div>
+          <div class="ep-dot green"></div>
+          <span style="font-size:13px;color:var(--text-muted);margin-left:8px;">AI-generated · вариант A</span>
+        </div>
+        <div class="ep-body">
+          <div class="ep-subject">Увидел ваш пост про AI-автоматизацию 👋</div>
+          <div class="ep-meta">От: matvey@example.com · Кому: ivan@company.ru</div>
+          <div class="ep-text">
+            Привет, <span class="highlight">Иван</span>! Наткнулся на ваш пост о том, как вы внедряете <span class="highlight">AI в sales-процессы в FinTech</span> — очень близко к тому, над чем я работаю.
+            <br/><br/>
+            Строю инструмент, который помогает командам <span class="highlight">автоматизировать outreach</span> без потери персонализации. Думаю, вам было бы интересно посмотреть на конкретные цифры — open rate 42% вместо типичных 15%.
+            <br/><br/>
+            Готов показать за 15 минут. Удобно на этой неделе?
+          </div>
+          <div class="ep-ab">
+            <span class="ep-ab-tag a">Вариант A · открыт 68%</span>
+            <span class="ep-ab-tag b">Вариант B · открыт 41%</span>
+          </div>
+        </div>
+        <div class="ep-stats">
+          <div class="ep-stat"><div class="es-num">42%</div><div class="es-label">Open rate</div></div>
+          <div class="ep-stat"><div class="es-num">18%</div><div class="es-label">Reply rate</div></div>
+          <div class="ep-stat"><div class="es-num">2,400</div><div class="es-label">Отправлено</div></div>
+          <div class="ep-stat"><div class="es-num">4.2s</div><div class="es-label">Генерация</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-block fade-in">
+      <h2>Ключевые возможности</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">✍️</div>
+          <div class="feature-title">AI-генерация писем</div>
+          <div class="feature-desc">GPT-4 пишет уникальное письмо для каждого контакта на основе данных профиля.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🧪</div>
+          <div class="feature-title">A/B тестирование</div>
+          <div class="feature-desc">Автоматически тестирует варианты заголовков и текста, выбирает победителя.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📬</div>
+          <div class="feature-title">Отслеживание открытий</div>
+          <div class="feature-desc">Пиксели, ссылки с UTM, real-time аналитика открытий и кликов.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔄</div>
+          <div class="feature-title">Follow-up цепочки</div>
+          <div class="feature-desc">Автоматические follow-up письма если нет ответа. Умная пауза и персонализация.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-block fade-in">
+      <h2>Технический стек</h2>
+      <div class="stack-row">
+        <span class="stack-tag">Python</span>
+        <span class="stack-tag">FastAPI</span>
+        <span class="stack-tag">React</span>
+        <span class="stack-tag">OpenAI API</span>
+        <span class="stack-tag">Redis</span>
+        <span class="stack-tag">PostgreSQL</span>
+        <span class="stack-tag">SendGrid</span>
+        <span class="stack-tag">Celery</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="project-nav">
+    <a href="project-analytics.html" class="pnav-link">
+      <span class="pnav-label">← Предыдущий</span>
+      <span class="pnav-title">Аналитическая платформа</span>
+    </a>
+    <a href="project-ai.html" class="pnav-link right">
+      <span class="pnav-label">Вернуться к первому →</span>
+      <span class="pnav-title">AI Ассистент</span>
+    </a>
+  </div>
+
+  <footer>
+    <div class="footer-left">© 2026 <a href="index.html">Матвей Бережных</a></div>
+    <div class="footer-socials">
+      <a href="https://github.com/tamed0g" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://t.me/tamed0g" target="_blank" rel="noopener noreferrer">Telegram</a>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
