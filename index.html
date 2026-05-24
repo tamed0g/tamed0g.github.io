@@ -105,37 +105,116 @@
       gap: 20px; overflow: visible; padding-bottom: 60px;
     }
 
-    .project-card {
-      background: var(--bg); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 28px;
-      display: flex; flex-direction: column; gap: 12px;
-      cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    /* ── 3D PROJECT CARDS (uiverse Smit-Prajapati, adapted) ── */
+    .pc-parent {
+      width: 100%;
+      height: 320px;
+      perspective: 1000px;
     }
-    .project-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
-      border-color: #ccc;
+    .pc-card {
+      height: 100%;
+      border-radius: 28px;
+      background: linear-gradient(135deg, #22c55e 0%, #15803d 100%);
+      transition: all 0.5s ease-in-out;
+      transform-style: preserve-3d;
+      box-shadow: rgba(5, 71, 17, 0) 40px 50px 25px -40px, rgba(5, 71, 17, 0.2) 0px 25px 25px -5px;
+      position: relative;
+      overflow: hidden;
     }
-    .project-card-top { display: flex; align-items: center; justify-content: space-between; }
-    .project-icon {
-      width: 44px; height: 44px; background: var(--bg2);
-      border: 1px solid var(--border); border-radius: 10px;
-      display: flex; align-items: center; justify-content: center; font-size: 22px;
+    .pc-glass {
+      transform-style: preserve-3d;
+      position: absolute;
+      inset: 8px;
+      border-radius: 22px;
+      border-top-right-radius: 100%;
+      background: linear-gradient(0deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.78) 100%);
+      transform: translate3d(0, 0, 25px);
+      border-left: 1px solid white;
+      border-bottom: 1px solid white;
+      transition: all 0.5s ease-in-out;
     }
-    .project-card h3 { font-size: 17px; font-weight: 700; letter-spacing: -0.3px; color: var(--text); }
-    .project-card p { font-size: 14px; color: var(--text-muted); line-height: 1.7; flex: 1; }
-    .project-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
-    .stack-tag-sm {
-      font-size: 12px; font-weight: 500; color: var(--text);
-      background: var(--bg3); border-radius: 4px; padding: 2px 8px;
+    .pc-logo {
+      position: absolute;
+      right: 0; top: 0;
+      transform-style: preserve-3d;
     }
-    .project-links { display: flex; gap: 10px; margin-top: 4px; }
-    .project-link {
-      font-size: 13px; font-weight: 600; color: var(--text-muted);
-      text-decoration: none; display: flex; align-items: center; gap: 4px; transition: color 0.15s;
+    .pc-circle {
+      display: block; position: absolute; aspect-ratio: 1;
+      border-radius: 50%; top: 0; right: 0;
+      box-shadow: rgba(100,100,111,0.2) -10px 10px 20px 0px;
+      backdrop-filter: blur(5px);
+      background: rgba(255,255,255,0.18);
+      transition: all 0.5s ease-in-out;
     }
-    .project-link:hover { color: var(--text); }
+    .pc-circle1 { width: 155px; transform: translate3d(0,0,20px); top: 8px; right: 8px; }
+    .pc-circle2 { width: 125px; transform: translate3d(0,0,40px); top: 10px; right: 10px; backdrop-filter: blur(1px); transition-delay: 0.4s; }
+    .pc-circle3 { width: 96px;  transform: translate3d(0,0,60px); top: 17px; right: 17px; transition-delay: 0.8s; }
+    .pc-circle4 { width: 68px;  transform: translate3d(0,0,80px); top: 23px; right: 23px; transition-delay: 1.2s; }
+    .pc-circle5 {
+      width: 42px; transform: translate3d(0,0,100px);
+      top: 30px; right: 30px;
+      display: grid; place-content: center;
+      font-size: 18px; transition-delay: 1.6s;
+    }
+    .pc-content {
+      padding: 72px 52px 0 26px;
+      transform: translate3d(0, 0, 26px);
+    }
+    .pc-category {
+      display: inline-block;
+      font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+      color: rgba(255,255,255,0.8); background: rgba(255,255,255,0.22);
+      padding: 3px 8px; border-radius: 4px; margin-bottom: 10px;
+    }
+    .pc-title {
+      display: block;
+      color: #064e2a; font-weight: 800; font-size: 18px; letter-spacing: -0.3px;
+    }
+    .pc-text {
+      display: block;
+      color: rgba(6,78,42,0.78); font-size: 13px; margin-top: 8px; line-height: 1.55;
+    }
+    .pc-bottom {
+      padding: 8px 14px;
+      transform-style: preserve-3d;
+      position: absolute; bottom: 16px; left: 16px; right: 16px;
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
+      transform: translate3d(0, 0, 26px);
+    }
+    .pc-stack { display: flex; flex-wrap: wrap; gap: 5px; flex: 1; }
+    .pc-stack-tag {
+      font-size: 11px; font-weight: 600;
+      background: rgba(255,255,255,0.38); color: #064e2a;
+      padding: 3px 7px; border-radius: 4px;
+    }
+    .pc-links { display: flex; gap: 7px; transform-style: preserve-3d; flex-shrink: 0; }
+    .pc-link {
+      font-size: 12px; font-weight: 700; color: #064e2a;
+      text-decoration: none; background: rgba(255,255,255,0.92);
+      border-radius: 6px; padding: 5px 10px;
+      box-shadow: rgba(5,71,17,0.3) 0px 5px 5px -3px;
+      transition: transform 0.2s ease-in-out 0.4s, box-shadow 0.2s ease-in-out 0.4s, background 0.15s;
+    }
+    .pc-link:nth-child(2) { transition-delay: 0.6s, 0.6s, 0s; }
+    .pc-link:hover { background: #064e2a; color: white; }
+
+    /* Hover 3D */
+    .pc-parent:hover .pc-card {
+      transform: rotate3d(1, 1, 0, 30deg);
+      box-shadow: rgba(5,71,17,0.3) 30px 50px 25px -40px, rgba(5,71,17,0.1) 0px 25px 30px 0px;
+    }
+    .pc-parent:hover .pc-links .pc-link {
+      transform: translate3d(0, 0, 50px);
+      box-shadow: rgba(5,71,17,0.2) -5px 20px 10px 0px;
+    }
+    .pc-parent:hover .pc-circle2 { transform: translate3d(0, 0, 60px); }
+    .pc-parent:hover .pc-circle3 { transform: translate3d(0, 0, 80px); }
+    .pc-parent:hover .pc-circle4 { transform: translate3d(0, 0, 100px); }
+    .pc-parent:hover .pc-circle5 { transform: translate3d(0, 0, 120px); }
+
+    @media (max-width: 768px) {
+      .pc-parent:hover .pc-card { transform: none; }
+    }
 
     /* ── CTA ── */
     #contact { text-align: center; }
@@ -301,60 +380,93 @@
 
       <div class="projects-grid">
 
-        <div class="project-card">
-          <div class="project-card-top">
-            <div class="project-icon">🤖</div>
-            <span class="project-tag">AI · Агент</span>
-          </div>
-          <h3>AI Ассистент</h3>
-          <p>Умный чат-бот на основе LLM с памятью, инструментами и RAG поиском по документам. Работает как продакшен-сервис.</p>
-          <div class="project-stack">
-            <span class="stack-tag-sm">Python</span>
-            <span class="stack-tag-sm">LangChain</span>
-            <span class="stack-tag-sm">FastAPI</span>
-            <span class="stack-tag-sm">OpenAI</span>
-          </div>
-          <div class="project-links">
-            <a href="project-ai.html" class="project-link">Подробнее →</a>
-            <a href="https://github.com/tamed0g/assistant" target="_blank" rel="noopener noreferrer" class="project-link">GitHub ↗</a>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-card-top">
-            <div class="project-icon">📊</div>
-            <span class="project-tag">Full-stack · SaaS</span>
-          </div>
-          <h3>Аналитическая платформа</h3>
-          <p>Веб-приложение для анализа данных с интерактивными дашбордами, экспортом отчётов и AI-инсайтами.</p>
-          <div class="project-stack">
-            <span class="stack-tag-sm">Next.js</span>
-            <span class="stack-tag-sm">TypeScript</span>
-            <span class="stack-tag-sm">PostgreSQL</span>
-            <span class="stack-tag-sm">Supabase</span>
-          </div>
-          <div class="project-links">
-            <a href="project-analytics.html" class="project-link">Подробнее →</a>
-            <a href="https://github.com/tamed0g/ai_dashboard" target="_blank" rel="noopener noreferrer" class="project-link">GitHub ↗</a>
+        <div class="pc-parent">
+          <div class="pc-card">
+            <div class="pc-logo">
+              <span class="pc-circle pc-circle1"></span>
+              <span class="pc-circle pc-circle2"></span>
+              <span class="pc-circle pc-circle3"></span>
+              <span class="pc-circle pc-circle4"></span>
+              <span class="pc-circle pc-circle5">🤖</span>
+            </div>
+            <div class="pc-glass"></div>
+            <div class="pc-content">
+              <span class="pc-category">AI · Агент</span>
+              <span class="pc-title">AI Ассистент</span>
+              <span class="pc-text">Чат-бот на LLM с памятью, инструментами и RAG поиском по документам.</span>
+            </div>
+            <div class="pc-bottom">
+              <div class="pc-stack">
+                <span class="pc-stack-tag">Python</span>
+                <span class="pc-stack-tag">LangChain</span>
+                <span class="pc-stack-tag">FastAPI</span>
+                <span class="pc-stack-tag">OpenAI</span>
+              </div>
+              <div class="pc-links">
+                <a href="project-ai.html" class="pc-link">Детали →</a>
+                <a href="https://github.com/tamed0g/assistant" target="_blank" rel="noopener noreferrer" class="pc-link">GitHub ↗</a>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="project-card">
-          <div class="project-card-top">
-            <div class="project-icon">✉️</div>
-            <span class="project-tag">Автоматизация</span>
+        <div class="pc-parent">
+          <div class="pc-card">
+            <div class="pc-logo">
+              <span class="pc-circle pc-circle1"></span>
+              <span class="pc-circle pc-circle2"></span>
+              <span class="pc-circle pc-circle3"></span>
+              <span class="pc-circle pc-circle4"></span>
+              <span class="pc-circle pc-circle5">📊</span>
+            </div>
+            <div class="pc-glass"></div>
+            <div class="pc-content">
+              <span class="pc-category">Full-stack · SaaS</span>
+              <span class="pc-title">Аналитическая платформа</span>
+              <span class="pc-text">Дашборды, экспорт отчётов и AI-инсайты для бизнеса в реальном времени.</span>
+            </div>
+            <div class="pc-bottom">
+              <div class="pc-stack">
+                <span class="pc-stack-tag">Next.js</span>
+                <span class="pc-stack-tag">TypeScript</span>
+                <span class="pc-stack-tag">PostgreSQL</span>
+                <span class="pc-stack-tag">Supabase</span>
+              </div>
+              <div class="pc-links">
+                <a href="project-analytics.html" class="pc-link">Детали →</a>
+                <a href="https://github.com/tamed0g/ai_dashboard" target="_blank" rel="noopener noreferrer" class="pc-link">GitHub ↗</a>
+              </div>
+            </div>
           </div>
-          <h3>Outreach автоматизация</h3>
-          <p>Система персонализированных рассылок с AI-генерацией текстов, аналитикой открытий и A/B тестированием.</p>
-          <div class="project-stack">
-            <span class="stack-tag-sm">Python</span>
-            <span class="stack-tag-sm">React</span>
-            <span class="stack-tag-sm">OpenAI</span>
-            <span class="stack-tag-sm">Redis</span>
-          </div>
-          <div class="project-links">
-            <a href="project-outreach.html" class="project-link">Подробнее →</a>
-            <a href="https://github.com/tamed0g/b2b-outreach-pipeline" target="_blank" rel="noopener noreferrer" class="project-link">GitHub ↗</a>
+        </div>
+
+        <div class="pc-parent">
+          <div class="pc-card">
+            <div class="pc-logo">
+              <span class="pc-circle pc-circle1"></span>
+              <span class="pc-circle pc-circle2"></span>
+              <span class="pc-circle pc-circle3"></span>
+              <span class="pc-circle pc-circle4"></span>
+              <span class="pc-circle pc-circle5">✉️</span>
+            </div>
+            <div class="pc-glass"></div>
+            <div class="pc-content">
+              <span class="pc-category">Автоматизация</span>
+              <span class="pc-title">Outreach автоматизация</span>
+              <span class="pc-text">AI-генерация писем, аналитика открытий и A/B тестирование для B2B рассылок.</span>
+            </div>
+            <div class="pc-bottom">
+              <div class="pc-stack">
+                <span class="pc-stack-tag">Python</span>
+                <span class="pc-stack-tag">React</span>
+                <span class="pc-stack-tag">OpenAI</span>
+                <span class="pc-stack-tag">Redis</span>
+              </div>
+              <div class="pc-links">
+                <a href="project-outreach.html" class="pc-link">Детали →</a>
+                <a href="https://github.com/tamed0g/b2b-outreach-pipeline" target="_blank" rel="noopener noreferrer" class="pc-link">GitHub ↗</a>
+              </div>
+            </div>
           </div>
         </div>
 
