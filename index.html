@@ -156,14 +156,10 @@
       width: 44px; transform: translate3d(0,0,100px);
       top: 28px; right: 28px;
       display: grid; place-content: center;
+      transition: all 0.5s ease-in-out;
       transition-delay: 1.6s;
-      background: rgba(10,10,10,0.82) !important;
-      text-decoration: none;
-      cursor: pointer;
-      transition: background 0.3s, transform 0.5s ease-in-out;
     }
-    .pc-circle5 svg { width: 22px; height: 22px; fill: white; pointer-events: none; }
-    .pc-circle5:hover { background: #181717 !important; }
+    .pc-circle5 svg { pointer-events: none; }
 
     .pc-content {
       position: absolute;
@@ -206,7 +202,40 @@
       transform-style: preserve-3d;
     }
 
-    /* GitHub button — moved to pc-circle5 icon */
+    /* ── GitHub tooltip button ── */
+    .pc-github-group {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .pc-github-group a {
+      display: flex; align-items: center; justify-content: center;
+      padding: 4px; background: none; text-decoration: none;
+      color: #064e2a;
+    }
+    .pc-github-group svg {
+      width: 28px; height: 28px;
+      transition: transform 0.2s ease, stroke 0.2s ease;
+    }
+    .pc-github-group:hover svg { transform: scale(1.25); stroke: #3b82f6; }
+    .pc-github-tooltip {
+      position: absolute;
+      bottom: calc(100% + 10px);
+      left: 50%; transform: translateX(-50%) scale(0);
+      transform-origin: center bottom;
+      z-index: 50;
+      padding: 5px 12px;
+      border-radius: 8px;
+      border: 1px solid #d1d5db;
+      background: white; color: #111;
+      font-size: 12px; font-weight: 700;
+      white-space: nowrap;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+      transition: transform 0.25s ease-in-out;
+      pointer-events: none;
+    }
+    .pc-github-group:hover .pc-github-tooltip { transform: translateX(-50%) scale(1); }
 
     /* Details button */
     .pc-btn-details {
@@ -422,9 +451,9 @@
               <span class="pc-circle pc-circle2"></span>
               <span class="pc-circle pc-circle3"></span>
               <span class="pc-circle pc-circle4"></span>
-              <a href="https://github.com/tamed0g/assistant" target="_blank" rel="noopener noreferrer" class="pc-circle pc-circle5">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              </a>
+              <span class="pc-circle pc-circle5">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#064e2a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7H3a7 7 0 0 1 7-7h1V5.73A2 2 0 0 1 10 4a2 2 0 0 1 2-2zM3 14v1a9 9 0 0 0 18 0v-1"/></svg>
+              </span>
             </div>
             <div class="pc-glass"></div>
             <div class="pc-content">
@@ -439,7 +468,15 @@
                 <span class="pc-stack-tag">FastAPI</span>
                 <span class="pc-stack-tag">OpenAI</span>
               </div>
-              <a href="project-ai.html" class="pc-btn-details"><span>Детали →</span></a>
+              <div style="display:flex;gap:8px;align-items:center;">
+                <div class="pc-github-group">
+                  <a href="https://github.com/tamed0g/assistant" target="_blank" rel="noopener noreferrer">
+                    <svg stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor" fill="none" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                  </a>
+                  <span class="pc-github-tooltip">GitHub</span>
+                </div>
+                <a href="project-ai.html" class="pc-btn-details"><span>Детали →</span></a>
+              </div>
             </div>
           </div>
         </div>
@@ -451,9 +488,9 @@
               <span class="pc-circle pc-circle2"></span>
               <span class="pc-circle pc-circle3"></span>
               <span class="pc-circle pc-circle4"></span>
-              <a href="https://github.com/tamed0g/ai_dashboard" target="_blank" rel="noopener noreferrer" class="pc-circle pc-circle5">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              </a>
+              <span class="pc-circle pc-circle5">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#064e2a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              </span>
             </div>
             <div class="pc-glass"></div>
             <div class="pc-content">
@@ -468,7 +505,15 @@
                 <span class="pc-stack-tag">PostgreSQL</span>
                 <span class="pc-stack-tag">Supabase</span>
               </div>
-              <a href="project-analytics.html" class="pc-btn-details"><span>Детали →</span></a>
+              <div style="display:flex;gap:8px;align-items:center;">
+                <div class="pc-github-group">
+                  <a href="https://github.com/tamed0g/ai_dashboard" target="_blank" rel="noopener noreferrer">
+                    <svg stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor" fill="none" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                  </a>
+                  <span class="pc-github-tooltip">GitHub</span>
+                </div>
+                <a href="project-analytics.html" class="pc-btn-details"><span>Детали →</span></a>
+              </div>
             </div>
           </div>
         </div>
@@ -480,9 +525,9 @@
               <span class="pc-circle pc-circle2"></span>
               <span class="pc-circle pc-circle3"></span>
               <span class="pc-circle pc-circle4"></span>
-              <a href="https://github.com/tamed0g/b2b-outreach-pipeline" target="_blank" rel="noopener noreferrer" class="pc-circle pc-circle5">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              </a>
+              <span class="pc-circle pc-circle5">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#064e2a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+              </span>
             </div>
             <div class="pc-glass"></div>
             <div class="pc-content">
@@ -497,7 +542,15 @@
                 <span class="pc-stack-tag">OpenAI</span>
                 <span class="pc-stack-tag">Redis</span>
               </div>
-              <a href="project-outreach.html" class="pc-btn-details"><span>Детали →</span></a>
+              <div style="display:flex;gap:8px;align-items:center;">
+                <div class="pc-github-group">
+                  <a href="https://github.com/tamed0g/b2b-outreach-pipeline" target="_blank" rel="noopener noreferrer">
+                    <svg stroke-linejoin="round" stroke-linecap="round" stroke-width="2" stroke="currentColor" fill="none" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                  </a>
+                  <span class="pc-github-tooltip">GitHub</span>
+                </div>
+                <a href="project-outreach.html" class="pc-btn-details"><span>Детали →</span></a>
+              </div>
             </div>
           </div>
         </div>
